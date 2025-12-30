@@ -53,5 +53,7 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
-# MacOS-specific junk
+# junk
 .DS_Store
+.idea/
+*.sln.DotSettings.user
