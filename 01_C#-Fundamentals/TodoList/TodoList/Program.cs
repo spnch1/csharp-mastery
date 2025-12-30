@@ -20,66 +20,11 @@ do
             break;
         case "A":
             PrintChoice(choice);
-            var isValidDescription = false;
-            do
-            {
-                Console.WriteLine("Enter the TODO description:");
-                var description = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(description))
-                {
-                    Console.WriteLine("Description must be non-empty");
-                }
-                else if (todos.Contains(description))
-                {
-                    Console.WriteLine($"Description must be unique " +
-                                      $"(entry already exists at index {todos.IndexOf(description)})");
-                }
-                else
-                {
-                    todos.Add(description);
-                    Console.WriteLine($"TODO successfully added: {description}");
-                    isValidDescription = true;
-                }
-            } while (!isValidDescription);
+            AddTodoEntry(todos);
             break;
         case "R":
             PrintChoice(choice);
-            if (todos.Count == 0)
-            {
-                Console.WriteLine("Nothing to remove!");
-                break;
-            }
-            var isValidIdx = false;
-            do
-            {
-                var todosAmount = todos.Count;
-                Console.WriteLine("Select the index of the TODO you want removed " +
-                                  "(or type 'back' to cancel):");
-                PrintNumeratedList(todos);
-
-                string input = Console.ReadLine() ?? "";
-                if (input.ToLower() == "back")
-                    break;
-                
-                if (int.TryParse(input, out int idx))
-                {
-                    idx--;
-                    if (idx < 0 || idx >= todosAmount)
-                    {
-                        Console.WriteLine("No such TODO.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Removed entry #{idx + 1}: {todos[idx]}");
-                        todos.RemoveAt(idx);
-                        isValidIdx = true;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid index format: must be an integer. Try again.");
-                }
-            } while (!isValidIdx);
+            RemoveTodoEntry(todos);
             break;
         case "E":
             PrintChoice(choice);
@@ -92,21 +37,94 @@ do
 
 Console.WriteLine("See you next time!");
 Console.ReadKey(true);
+return;
 
 void PrintChoice(in string choice)
 {
     Console.WriteLine($"Chosen option: {choice}");
 }
 
-void PrintNumeratedList(List<string> items)
+void PrintNumeratedList(List<string> list)
 {
-    if (items.Count == 0)
+    if (list.Count == 0)
     {
         Console.WriteLine("No TODO entries found.");
         return;
     }
-    for (int i = 0; i < items.Count; ++i)
+    for (var i = 0; i < list.Count; ++i)
     {
-        Console.WriteLine($"{i + 1}. {items[i]}");
+        Console.WriteLine($"{i + 1}. {list[i]}");
     }
+}
+
+void AddTodoEntry(List<string> list)
+{
+    string description;
+    do
+    {
+        Console.WriteLine("Enter the TODO description:");
+        description = Console.ReadLine()!;
+    } while (!IsValidDescription(description, list));
+    
+    list.Add(description!);
+    Console.WriteLine($"TODO successfully added: {description}");
+}
+
+void RemoveTodoEntry(List<string> list)
+{
+    if (list.Count == 0)
+    {
+        Console.WriteLine("Nothing to remove!");
+        return;
+    }
+    var isValidIdx = false;
+    do
+    {
+        var todosAmount = list.Count;
+        Console.WriteLine("Select the index of the TODO you want removed " +
+                          "(or type 'back' to cancel):");
+        PrintNumeratedList(list);
+
+        var input = Console.ReadLine();
+        if (IsValueNullOrWhiteSpace(input)) continue;
+        
+        if (input!.ToLower() == "back")
+            break;
+        
+        if (int.TryParse(input, out var idx))
+        {
+            idx--;
+            if (idx < 0 || idx >= todosAmount)
+            {
+                Console.WriteLine("No such TODO.");
+            }
+            else
+            {
+                Console.WriteLine($"Removed entry #{idx + 1}: {list[idx]}");
+                list.RemoveAt(idx);
+                isValidIdx = true;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid index format: must be an integer. Try again.");
+        }
+    } while (!isValidIdx);
+}
+
+bool IsValueNullOrWhiteSpace(string? s)
+{
+    if (!string.IsNullOrWhiteSpace(s)) return false;
+    Console.WriteLine("Input must be non-empty");
+    return true;
+}
+
+bool IsValidDescription(string? s, List<string> list)
+{
+    if (IsValueNullOrWhiteSpace(s)) return false;
+
+    if (!list.Contains(s!)) return true;
+    Console.WriteLine($"Description must be unique " +
+                      $"(entry already exists at index {list.IndexOf(s!)})");
+    return false;
 }
