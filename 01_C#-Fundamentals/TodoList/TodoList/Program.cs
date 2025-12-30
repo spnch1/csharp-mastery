@@ -36,6 +36,7 @@ do
 } while (choice != "E");
 
 Console.WriteLine("See you next time!");
+Console.WriteLine("Press any key to exit. . .");
 Console.ReadKey(true);
 return;
 
