@@ -77,39 +77,25 @@ void RemoveTodoEntry(List<string> list)
         Console.WriteLine("Nothing to remove!");
         return;
     }
-    var isValidIdx = false;
+
+    bool isEntryRemoved = false;
     do
     {
-        var todosAmount = list.Count;
-        Console.WriteLine("Select the index of the TODO you want removed " +
-                          "(or type 'back' to cancel):");
+        Console.WriteLine("Select the index of the TODO you want removed (or type 'back' to cancel):");
         PrintNumeratedList(list);
 
         var input = Console.ReadLine();
+
         if (IsValueNullOrWhiteSpace(input)) continue;
-        
-        if (input!.ToLower() == "back")
-            break;
-        
-        if (int.TryParse(input, out var idx))
+        if (input!.ToLower() == "back") return;
+
+        if (TryGetValidIdx(input, list.Count, out int idx))
         {
-            idx--;
-            if (idx < 0 || idx >= todosAmount)
-            {
-                Console.WriteLine("No such TODO.");
-            }
-            else
-            {
-                Console.WriteLine($"Removed entry #{idx + 1}: {list[idx]}");
-                list.RemoveAt(idx);
-                isValidIdx = true;
-            }
+            Console.WriteLine($"Removed entry #{idx + 1}: {list[idx]}");
+            list.RemoveAt(idx);
+            isEntryRemoved = true;
         }
-        else
-        {
-            Console.WriteLine("Invalid index format: must be an integer. Try again.");
-        }
-    } while (!isValidIdx);
+    } while (!isEntryRemoved);
 }
 
 bool IsValueNullOrWhiteSpace(string? s)
@@ -126,5 +112,22 @@ bool IsValidDescription(string? s, List<string> list)
     if (!list.Contains(s!)) return true;
     Console.WriteLine($"Description must be unique " +
                       $"(entry already exists at index {list.IndexOf(s!)})");
+    return false;
+}
+
+bool TryGetValidIdx(string input, int listCount, out int idx)
+{
+    if (int.TryParse(input, out idx))
+    {
+        idx--;
+        if (idx >= 0 && idx < listCount) return true;
+        Console.WriteLine("No such TODO");
+    }
+    else
+    {
+        Console.WriteLine("Invalid index format: must be an integer. Try again.");
+    }
+
+    idx = -1;
     return false;
 }
