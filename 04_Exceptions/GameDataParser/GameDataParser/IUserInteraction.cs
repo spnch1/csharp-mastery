@@ -6,5 +6,4 @@ public interface IUserInteraction
     void ShowError(string message);
     void PromptFileName();
     string ParseFileName();
-    void PrintGames(IEnumerable<Game> games);
 }

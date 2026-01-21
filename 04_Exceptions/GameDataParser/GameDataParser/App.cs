@@ -2,8 +2,9 @@ namespace GameDataParser;
 
 public class App(
     IUserInteraction userInteraction,
-    IJsonParser jsonParser,
-    ILogger logger)
+    IGameJsonParser gameJsonParser,
+    ILogger logger,
+    IGamesPrinter gamesPrinter)
 {
     public void Run()
     {
@@ -11,9 +12,9 @@ public class App(
         {
             string filePath = userInteraction.ParseFileName();
 
-            List<Game> games = jsonParser.ParseJson(filePath);
+            List<Game> games = gameJsonParser.ParseJson(filePath);
 
-            userInteraction.PrintGames(games);
+            gamesPrinter.Print(games);
         }
         catch (Exception ex)
         {

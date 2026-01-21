@@ -1,8 +1,11 @@
 ﻿using GameDataParser;
 
+var userInteraction = new ConsoleUserInteraction();
+
 var app = new App(
-    new UserInteraction(),
-    new JsonParser(),
-    new Logger("log.txt"));
+    userInteraction,
+    new GameJsonParser(),
+    new Logger("log.txt"),
+    new GamesPrinter(userInteraction));
 
 app.Run();

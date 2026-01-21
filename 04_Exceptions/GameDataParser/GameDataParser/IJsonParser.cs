@@ -1,6 +1,6 @@
 namespace GameDataParser;
 
-public interface IJsonParser
+public interface IGameJsonParser
 {
     List<Game> ParseJson(string filePath);
 }

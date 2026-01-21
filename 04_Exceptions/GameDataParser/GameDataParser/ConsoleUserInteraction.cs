@@ -1,6 +1,6 @@
 namespace GameDataParser;
 
-public class UserInteraction : IUserInteraction
+public class ConsoleUserInteraction : IUserInteraction
 {
     public void ShowMessage(string message) => Console.WriteLine(message);
 
@@ -41,12 +41,5 @@ public class UserInteraction : IUserInteraction
         } while (!shallStop);
 
         return input!;
-    }
-    
-    public void PrintGames(IEnumerable<Game> games)
-    {
-        Console.WriteLine("Loaded games are:");
-        foreach (var game in games)
-            Console.WriteLine($"{game.Title}, released in {game.ReleaseYear}, rating: {game.Rating}");
     }
 }

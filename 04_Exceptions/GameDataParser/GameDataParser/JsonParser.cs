@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace GameDataParser;
 
-public class JsonParser : IJsonParser
+public class GameJsonParser : IGameJsonParser
 {
     public List<Game> ParseJson(string filePath)
     {
