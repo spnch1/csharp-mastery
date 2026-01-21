@@ -1,4 +1,6 @@
-namespace GameDataParser;
+using GameDataParser.Model;
+
+namespace GameDataParser.UserInteraction;
 
 public interface IGamesPrinter
 {

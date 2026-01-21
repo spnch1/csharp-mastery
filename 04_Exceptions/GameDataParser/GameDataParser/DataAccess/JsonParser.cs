@@ -1,6 +1,7 @@
 using System.Text.Json;
+using GameDataParser.Model;
 
-namespace GameDataParser;
+namespace GameDataParser.DataAccess;
 
 public class GameJsonParser : IGameJsonParser
 {

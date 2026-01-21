@@ -1,4 +1,9 @@
-namespace GameDataParser;
+using GameDataParser.DataAccess;
+using GameDataParser.Logger;
+using GameDataParser.Model;
+using GameDataParser.UserInteraction;
+
+namespace GameDataParser.App;
 
 public class App(
     IUserInteraction userInteraction,

@@ -1,4 +1,8 @@
 ﻿using GameDataParser;
+using GameDataParser.App;
+using GameDataParser.DataAccess;
+using GameDataParser.Logger;
+using GameDataParser.UserInteraction;
 
 var userInteraction = new ConsoleUserInteraction();
 

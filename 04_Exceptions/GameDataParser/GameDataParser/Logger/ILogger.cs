@@ -1,4 +1,4 @@
-namespace GameDataParser;
+namespace GameDataParser.Logger;
 
 public interface ILogger
 {

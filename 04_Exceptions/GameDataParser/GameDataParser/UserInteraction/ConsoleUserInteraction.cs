@@ -1,4 +1,4 @@
-namespace GameDataParser;
+namespace GameDataParser.UserInteraction;
 
 public class ConsoleUserInteraction : IUserInteraction
 {

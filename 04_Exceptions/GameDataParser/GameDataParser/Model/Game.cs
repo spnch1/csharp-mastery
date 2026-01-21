@@ -1,4 +1,4 @@
-namespace GameDataParser;
+namespace GameDataParser.Model;
 
 public class Game(string title, int releaseYear, float rating)
 {

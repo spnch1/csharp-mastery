@@ -1,4 +1,4 @@
-namespace GameDataParser;
+namespace GameDataParser.DataAccess;
 
 [Serializable]
 public class InvalidJsonException(string filePath, string jsonString, Exception? inner = null) 
