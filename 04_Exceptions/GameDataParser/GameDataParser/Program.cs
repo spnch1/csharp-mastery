@@ -1,1 +1,8 @@
-﻿
+﻿using GameDataParser;
+
+var app = new App(
+    new UserInteraction(),
+    new JsonParser(),
+    new Logger());
+
+app.Run();
