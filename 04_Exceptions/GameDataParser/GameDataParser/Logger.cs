@@ -1,9 +1,7 @@
 namespace GameDataParser;
 
-public class Logger : ILogger
+public class Logger(string logFilePath) : ILogger
 {
-    private const string LogFilePath = "log.txt";
-    
     public void Log(Exception ex)
     {
         try
@@ -17,7 +15,7 @@ public class Logger : ILogger
                             {ex.StackTrace}                      
 
                             """;
-            File.AppendAllText(LogFilePath, logEntry + Environment.NewLine);
+            File.AppendAllText(logFilePath, logEntry + Environment.NewLine);
         }
         catch
         {

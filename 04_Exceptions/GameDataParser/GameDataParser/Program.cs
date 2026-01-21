@@ -3,6 +3,6 @@
 var app = new App(
     new UserInteraction(),
     new JsonParser(),
-    new Logger());
+    new Logger("log.txt"));
 
 app.Run();
