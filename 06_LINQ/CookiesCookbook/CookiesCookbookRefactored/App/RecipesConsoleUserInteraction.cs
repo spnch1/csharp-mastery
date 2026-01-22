@@ -16,14 +16,14 @@ public class RecipesConsoleUserInteraction(IIngredientsRegister ingredientsRegis
         if (recipes.Any())
         {
             Console.WriteLine($"Existing recipes:{Environment.NewLine}");
-
-            var counter = 1;
-            foreach (var recipe in recipes)
-            {
-                Console.WriteLine($"*****{counter}*****");
-                Console.WriteLine(recipe + Environment.NewLine);
-                ++counter;
-            }
+            
+            var recipesAsStrings = recipes
+                .Select((recipe, index) => $"""
+                                            *****{index + 1}*****
+                                            {recipe}
+                                            """);
+            Console.WriteLine(string.Join(Environment.NewLine, recipesAsStrings));
+            Console.WriteLine();
         }
     }
 
@@ -31,10 +31,7 @@ public class RecipesConsoleUserInteraction(IIngredientsRegister ingredientsRegis
     {
         Console.WriteLine("Create a new cookie recipe! " +
                           "Available ingredients are:");
-        foreach (var ingredient in ingredientsRegister.All)
-        {
-            Console.WriteLine(ingredient);
-        }
+        Console.WriteLine(string.Join(Environment.NewLine, ingredientsRegister.All));
     }
 
     public IEnumerable<Ingredient> ReadIngredientsFromUser()

@@ -14,6 +14,24 @@ public class IngredientsRegister : IIngredientsRegister
         new CocoaPowder(),
     };
 
-    public Ingredient GetById(int id) =>
-        Enumerable.FirstOrDefault(All, i => i.Id == id);
+    public Ingredient GetById(int id)
+    {
+        var allIngredientsWithGivenId = All
+            .Where(i => i.Id == id);
+
+        if (allIngredientsWithGivenId.Count() > 1)
+        {
+            throw new InvalidOperationException(
+                $"More than one ingredients have ID equal to {id}.");
+        }
+
+        // breaks SRP but fine enough for this assignment
+        if (All.Select(i => i.Id).Distinct().Count() != All.Count())
+        {
+            throw new InvalidOperationException(
+                $"Some ingredients have duplicated IDs.");
+        }
+        
+        return allIngredientsWithGivenId.FirstOrDefault();
+    }
 }
