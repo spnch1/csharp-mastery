@@ -1,5 +1,7 @@
-﻿using CsvDataAccess.CsvReading;
-using CsvDataAccess.Interface;
+﻿using NetUnderTheHoodAssignment.CsvReading;
+using NetUnderTheHoodAssignment.Interface;
+
+namespace NetUnderTheHoodAssignment.PerformanceTesting;
 
 public class ContentEqualityChecker
 {

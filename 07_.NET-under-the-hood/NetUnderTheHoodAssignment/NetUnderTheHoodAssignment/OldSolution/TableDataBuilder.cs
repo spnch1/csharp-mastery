@@ -1,7 +1,7 @@
-﻿using CsvDataAccess.CsvReading;
-using CsvDataAccess.Interface;
+﻿using NetUnderTheHoodAssignment.CsvReading;
+using NetUnderTheHoodAssignment.Interface;
 
-namespace CsvDataAccess.OldSolution;
+namespace NetUnderTheHoodAssignment.OldSolution;
 
 public class TableDataBuilder : ITableDataBuilder
 {

@@ -1,8 +1,8 @@
 ﻿using NetUnderTheHoodAssignment.Interface;
 
-namespace NetUnderTheHoodAssignment.OldSolution;
+namespace NetUnderTheHoodAssignment.NewSolution;
 
-public class TableData(IEnumerable<string> columns, List<Row> rows) : ITableData
+public class FastTableData(IEnumerable<string> columns, List<FastRow> rows) : ITableData
 {
     public int RowCount => rows.Count;
     public IEnumerable<string> Columns { get; } = columns;

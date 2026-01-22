@@ -1,8 +1,8 @@
-﻿using CsvDataAccess.CsvReading;
-using CsvDataAccess.Interface;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using NetUnderTheHoodAssignment.CsvReading;
+using NetUnderTheHoodAssignment.Interface;
 
-namespace CsvDataAccess.PerformanceTesting;
+namespace NetUnderTheHoodAssignment.PerformanceTesting;
 
 public static class TableDataPerformanceMeasurer
 {

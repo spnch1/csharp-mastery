@@ -1,4 +1,4 @@
-﻿namespace CsvDataAccess.Interface;
+﻿namespace NetUnderTheHoodAssignment.Interface;
 
 public interface ITableData
 {

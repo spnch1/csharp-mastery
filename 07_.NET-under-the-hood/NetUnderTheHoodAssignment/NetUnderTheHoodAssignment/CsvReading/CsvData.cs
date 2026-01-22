@@ -1,4 +1,4 @@
-﻿namespace CsvDataAccess.CsvReading;
+﻿namespace NetUnderTheHoodAssignment.CsvReading;
 
 public class CsvData(
     string[] columns,

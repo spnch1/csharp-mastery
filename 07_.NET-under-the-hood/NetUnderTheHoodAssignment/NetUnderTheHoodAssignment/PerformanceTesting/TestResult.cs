@@ -1,4 +1,4 @@
-﻿namespace CsvDataAccess.PerformanceTesting;
+﻿namespace NetUnderTheHoodAssignment.PerformanceTesting;
 
 public class TestResult
 {

@@ -1,4 +1,4 @@
-﻿namespace CsvDataAccess.OldSolution;
+﻿namespace NetUnderTheHoodAssignment.OldSolution;
 
 public class Row(Dictionary<string, object> data)
 {
