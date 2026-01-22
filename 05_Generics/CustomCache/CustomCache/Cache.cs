@@ -1,3 +1,5 @@
+namespace CustomCache;
+
 public class Cache<TKey, TData> where TKey : notnull
 {
     private readonly Dictionary<TKey, TData> _items = new();

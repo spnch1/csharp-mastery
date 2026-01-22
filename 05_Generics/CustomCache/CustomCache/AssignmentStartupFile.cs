@@ -1,4 +1,9 @@
-﻿IDataDownloader dataDownloader = new SlowDataDownloader();
+﻿using CustomCache;
+
+IDataDownloader dataDownloader =
+    new CachingDataDownloader(
+        new PrintingDataDownloader(
+            new SlowDataDownloader()));
 
 try
 {
