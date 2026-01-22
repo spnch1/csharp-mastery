@@ -2,20 +2,11 @@
 
 namespace CsvDataAccess.OldSolution;
 
-public class TableData : ITableData
+public class TableData(IEnumerable<string> columns, List<Row> rows) : ITableData
 {
-    private readonly List<Row> _rows;
-    public int RowCount => _rows.Count;
-    public IEnumerable<string> Columns { get; }
+    public int RowCount => rows.Count;
+    public IEnumerable<string> Columns { get; } = columns;
 
-    public TableData(IEnumerable<string> columns, List<Row> rows)
-    {
-        _rows = rows;
-        Columns = columns;
-    }
-
-    public object GetValue(string columnName, int rowIndex)
-    {
-        return _rows[rowIndex].GetAtColumn(columnName);
-    }
+    public object GetValue(string columnName, int rowIndex) =>
+        rows[rowIndex].GetAtColumn(columnName);
 }

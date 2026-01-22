@@ -13,10 +13,10 @@ public class TableDataBuilder : ITableDataBuilder
         {
             var newRowData = new Dictionary<string, object>();
 
-            for (int columnIndex = 0; columnIndex < csvData.Columns.Length; ++columnIndex)
+            for (var columnIndex = 0; columnIndex < csvData.Columns.Length; ++columnIndex)
             {
                 var column = csvData.Columns[columnIndex];
-                string valueAsString = row[columnIndex];
+                var valueAsString = row[columnIndex];
                 newRowData[column] = ConvertValueToTargetType(valueAsString);
             }
 

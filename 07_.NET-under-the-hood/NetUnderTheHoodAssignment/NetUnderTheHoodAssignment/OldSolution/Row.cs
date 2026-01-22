@@ -1,16 +1,7 @@
 ﻿namespace CsvDataAccess.OldSolution;
 
-public class Row
+public class Row(Dictionary<string, object> data)
 {
-    private Dictionary<string, object> _data;
-
-    public Row(Dictionary<string, object> data)
-    {
-        _data = data;
-    }
-
-    public object GetAtColumn(string columnName)
-    {
-        return _data[columnName];
-    }
+    public object GetAtColumn(string columnName) =>
+        data[columnName];
 }
