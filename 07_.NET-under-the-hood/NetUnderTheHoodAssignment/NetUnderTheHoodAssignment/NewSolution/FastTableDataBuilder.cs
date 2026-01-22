@@ -11,18 +11,39 @@ public class FastTableDataBuilder : ITableDataBuilder
 
         foreach (var row in csvData.Rows)
         {
-            var newRowData = new Dictionary<string, object>();
+            var newRow = new FastRow();
 
             for (var columnIndex = 0; columnIndex < csvData.Columns.Length; ++columnIndex)
             {
                 var column = csvData.Columns[columnIndex];
                 var valueAsString = row[columnIndex];
-                object value = ConvertValueToTargetType(valueAsString);
-                if (value is not null)
-                    newRowData[column] = value;
+                if (string.IsNullOrEmpty(valueAsString))
+                {
+                    continue;
+                }
+                else if (valueAsString == "TRUE")
+                {
+                    newRow.AssignCell(column, true);
+                }
+                else if (valueAsString == "FALSE")
+                {
+                    newRow.AssignCell(column, false);
+                }
+                else if (valueAsString.Contains(".") && decimal.TryParse(valueAsString, out var valueAsDecimal))
+                {
+                    newRow.AssignCell(column, valueAsDecimal);
+                }
+                else if (int.TryParse(valueAsString, out var valueAsInt))
+                {
+                    newRow.AssignCell(column, valueAsInt);
+                }
+                else
+                {
+                    newRow.AssignCell(column, valueAsString);
+                }
             }
-
-            resultRows.Add(new FastRow(newRowData));
+            
+            resultRows.Add(newRow);
         }
 
         return new FastTableData(csvData.Columns, resultRows);
