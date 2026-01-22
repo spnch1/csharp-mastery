@@ -48,29 +48,4 @@ public class FastTableDataBuilder : ITableDataBuilder
 
         return new FastTableData(csvData.Columns, resultRows);
     }
-    
-    private object ConvertValueToTargetType(string value)
-    {
-        if (string.IsNullOrEmpty(value))
-        {
-            return null;
-        }
-        if (value == "TRUE")
-        {
-            return true;
-        }
-        if (value == "FALSE")
-        {
-            return false;
-        }
-        if (value.Contains(".") && decimal.TryParse(value, out var valueAsDecimal))
-        {
-            return valueAsDecimal;
-        }
-        if (int.TryParse(value, out var valueAsInt))
-        {
-            return valueAsInt;
-        }
-        return value;
-    }
 }
