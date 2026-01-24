@@ -1,8 +1,5 @@
 ﻿using System.Collections;
 
-LinkedList<int> list = [];
-list.Add(5);
-
 public interface ILinkedList<T> : ICollection<T>
 {
     void AddToFront(T item);
