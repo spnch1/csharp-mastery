@@ -21,7 +21,7 @@ try
     userInteractor.ShowMessage("Fetching data. . .");
     var data =
         await quoteDataFetcher.FetchDataFromAllPagesAsync(numberOfPages, quotesPerPage);
-    await quoteDataProcessor.ProcessAsync(data, word, shallProcessInParallel, userInteractor);
+    await quoteDataProcessor.ProcessAsync(data, word, shallProcessInParallel);
     
     userInteractor.ShowMessage("Data fetched successfully!");
 }

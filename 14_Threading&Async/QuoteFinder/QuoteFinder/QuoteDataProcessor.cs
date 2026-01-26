@@ -11,8 +11,7 @@ public class QuoteDataProcessor(IUserInteractor userInteractor) : IQuoteDataProc
     public async Task ProcessAsync(
         IEnumerable<string> data,
         string? word,
-        bool shallProcessInParallel,
-        IUserInteractor userInteractor)
+        bool shallProcessInParallel)
     {
         if (shallProcessInParallel)
         {
