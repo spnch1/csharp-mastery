@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14_DiceRollGameToBeTested", "14_DiceRollGameToBeTested\14_DiceRollGameToBeTested.csproj", "{4DB01F6F-BC80-4372-A036-6B7FFD311743}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceRollGame.Tests", "DiceRollGame.Tests\DiceRollGame.Tests.csproj", "{71F9210E-1464-4A5A-9D60-F5FD9A0B6332}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DB01F6F-BC80-4372-A036-6B7FFD311743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB01F6F-BC80-4372-A036-6B7FFD311743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DB01F6F-BC80-4372-A036-6B7FFD311743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB01F6F-BC80-4372-A036-6B7FFD311743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F9210E-1464-4A5A-9D60-F5FD9A0B6332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F9210E-1464-4A5A-9D60-F5FD9A0B6332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F9210E-1464-4A5A-9D60-F5FD9A0B6332}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F9210E-1464-4A5A-9D60-F5FD9A0B6332}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

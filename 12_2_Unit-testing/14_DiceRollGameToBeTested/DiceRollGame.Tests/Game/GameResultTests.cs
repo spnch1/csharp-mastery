@@ -1,4 +1,4 @@
-namespace DiceRollGameTests.Game;
+namespace DiceRollGame.Tests.Game;
 
 public class GameResultTests
 {

@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="UserCommunication\" />
+      <ProjectReference Include="..\14_DiceRollGameToBeTested\14_DiceRollGameToBeTested.csproj" />
     </ItemGroup>
 
 </Project>
